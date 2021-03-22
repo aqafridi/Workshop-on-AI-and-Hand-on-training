@@ -5,7 +5,7 @@
     "colab": {
       "name": "S2: Image_Classification_using_CNN.ipynb",
       "provenance": [],
-      "authorship_tag": "ABX9TyO6kW5d4bltiqlzOhSzhzdn",
+      "authorship_tag": "ABX9TyMFcycH1pWGNwLDKF6XobmQ",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -22,7 +22,7 @@
         "colab_type": "text"
       },
       "source": [
-        "<a href=\"https://colab.research.google.com/github/kamranjaved/Workshop-on-AI-and-Hand-on-training/blob/main/Image%20Classification%20using%20CNN/Cifar10_Classification_using_CNN.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+        "<a href=\"https://colab.research.google.com/github/aqafridi/Workshop-on-AI-and-Hand-on-training/blob/main/S2%3A%20Image%20Classification%20using%20CNN/Cifar10_Classification_using_CNN\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
       ]
     },
     {
@@ -31,23 +31,23 @@
         "id": "tQTZ7yDf6jpA"
       },
       "source": [
-        "#CIFAR-10 Classification using CNN\r\n",
-        "CIFAR is an acronym that stands for the Canadian Institute For Advanced Research and the CIFAR-10 dataset was developed along with the CIFAR-100 dataset by researchers at the CIFAR institute.\r\n",
-        "\r\n",
-        "The dataset is comprised of 60,000 32×32 pixel color photographs of objects from 10 classes, such as frogs, birds, cats, ships, etc. The class labels and their standard associated integer values are listed below.\r\n",
-        "\r\n",
-        "0: airplane\r\n",
-        "1: automobile\r\n",
-        "2: bird\r\n",
-        "3: cat\r\n",
-        "4: deer\r\n",
-        "5: dog\r\n",
-        "6: frog\r\n",
-        "7: horse\r\n",
-        "8: ship\r\n",
-        "9: truck\r\n",
-        "These are very small images, much smaller than a typical photograph, and the dataset was intended for computer vision research.\r\n",
-        "\r\n",
+        "#CIFAR-10 Classification using CNN\n",
+        "CIFAR is an acronym that stands for the Canadian Institute For Advanced Research and the CIFAR-10 dataset was developed along with the CIFAR-100 dataset by researchers at the CIFAR institute.\n",
+        "\n",
+        "The dataset is comprised of 60,000 32×32 pixel color photographs of objects from 10 classes, such as frogs, birds, cats, ships, etc. The class labels and their standard associated integer values are listed below.\n",
+        "\n",
+        "0: airplane\n",
+        "1: automobile\n",
+        "2: bird\n",
+        "3: cat\n",
+        "4: deer\n",
+        "5: dog\n",
+        "6: frog\n",
+        "7: horse\n",
+        "8: ship\n",
+        "9: truck\n",
+        "These are very small images, much smaller than a typical photograph, and the dataset was intended for computer vision research.\n",
+        "\n",
         "CIFAR-10 is a well-understood dataset and widely used for benchmarking computer vision algorithms in the field of machine learning. The problem is “solved.” It is relatively straightforward to achieve 80% classification accuracy. Top performance on the problem is achieved by deep learning convolutional neural networks with a classification accuracy above 90% on the test dataset."
       ]
     },
@@ -70,10 +70,10 @@
         "outputId": "d1f836c2-f94f-44ff-a89f-3570b63548cd"
       },
       "source": [
-        "from google.colab import drive\r\n",
+        "from google.colab import drive\n",
         "drive.mount('/content/drive/', force_remount=True)"
       ],
-      "execution_count": 15,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -90,23 +90,23 @@
         "id": "ydM7iFzk5Bo0"
       },
       "source": [
-        "import numpy as np\r\n",
-        "import pandas as pd\r\n",
-        "import matplotlib.pyplot as plt\r\n",
-        "from keras.callbacks import CSVLogger\r\n",
-        "from tensorflow.keras.preprocessing import image\r\n",
-        "from tensorflow.keras.datasets import cifar10\r\n",
-        "from tensorflow.keras.models import Sequential\r\n",
-        "from tensorflow.keras.layers import Dropout\r\n",
-        "from tensorflow.keras.layers import Conv2D\r\n",
-        "from tensorflow.keras.layers import MaxPooling2D\r\n",
-        "from tensorflow.keras.layers import Flatten\r\n",
-        "from tensorflow.keras.layers import Dense\r\n",
-        "from tensorflow.keras.optimizers import Adam\r\n",
-        "from tensorflow.keras.models import Model\r\n",
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "from keras.callbacks import CSVLogger\n",
+        "from tensorflow.keras.preprocessing import image\n",
+        "from tensorflow.keras.datasets import cifar10\n",
+        "from tensorflow.keras.models import Sequential\n",
+        "from tensorflow.keras.layers import Dropout\n",
+        "from tensorflow.keras.layers import Conv2D\n",
+        "from tensorflow.keras.layers import MaxPooling2D\n",
+        "from tensorflow.keras.layers import Flatten\n",
+        "from tensorflow.keras.layers import Dense\n",
+        "from tensorflow.keras.optimizers import Adam\n",
+        "from tensorflow.keras.models import Model\n",
         "from tensorflow.keras.models import load_model"
       ],
-      "execution_count": 16,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -115,8 +115,8 @@
         "id": "noCf7HFU5tBT"
       },
       "source": [
-        "#Loading Data\r\n",
-        "**load data to training set and testing set**\r\n",
+        "#Loading Data\n",
+        "**load data to training set and testing set**\n",
         "This is a dataset of 50,000 32x32 color training images and 10,000 test images, labeled over 10 categories. See more info at the CIFAR homepage."
       ]
     },
@@ -128,7 +128,7 @@
       "source": [
         "(x_train, y_train), (x_test, y_test) = cifar10.load_data()"
       ],
-      "execution_count": 17,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -150,12 +150,12 @@
         "outputId": "1c7a98d7-f8a5-4f6e-f537-4416c4387aaa"
       },
       "source": [
-        "print('x_train shape:  '+ str(x_train.shape))\r\n",
-        "print('x_test shape: '+ str(x_test.shape))\r\n",
-        "print('y_train shape: '+ str(y_train.shape[0]))\r\n",
+        "print('x_train shape:  '+ str(x_train.shape))\n",
+        "print('x_test shape: '+ str(x_test.shape))\n",
+        "print('y_train shape: '+ str(y_train.shape[0]))\n",
         "print('x_test shape: '+ str(x_test.shape[0]))"
       ],
-      "execution_count": 18,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -189,17 +189,17 @@
         "outputId": "915c465e-1fa2-4f98-9403-09bde3aa63af"
       },
       "source": [
-        "fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)\r\n",
-        "fig.suptitle('Sharing x per column, y per row')\r\n",
-        "ax1.imshow(x_train[0])\r\n",
-        "ax2.imshow(x_train[1])\r\n",
-        "ax3.imshow(x_train[2])\r\n",
-        "ax4.imshow(x_train[3])\r\n",
-        "\r\n",
-        "for ax in fig.get_axes():\r\n",
+        "fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)\n",
+        "fig.suptitle('Sharing x per column, y per row')\n",
+        "ax1.imshow(x_train[0])\n",
+        "ax2.imshow(x_train[1])\n",
+        "ax3.imshow(x_train[2])\n",
+        "ax4.imshow(x_train[3])\n",
+        "\n",
+        "for ax in fig.get_axes():\n",
         "    ax.label_outer()"
       ],
-      "execution_count": 19,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "display_data",
@@ -222,8 +222,8 @@
         "id": "pd3Bwu7a7rhw"
       },
       "source": [
-        "#Pre-Processing the Data\r\n",
-        "The first step of any Machine Learning, Deep Learning or Data Science project is to pre-process the data. We will be defining the names of the classes, over which the dataset is distributed. There are 10 different classes of color images of size 32x32. Once we have set the class name. We need to normalize the image so that our model can train faster. The pixel range of a color image is 0–255. We will be dividing each pixel of the image by 255 so the pixel range will be between 0–1. Actually, we will be dividing it by 255.0 as it is a float operation. For the model, we will be using Convolutional Neural Networks (CNN).\r\n"
+        "#Pre-Processing the Data\n",
+        "The first step of any Machine Learning, Deep Learning or Data Science project is to pre-process the data. We will be defining the names of the classes, over which the dataset is distributed. There are 10 different classes of color images of size 32x32. Once we have set the class name. We need to normalize the image so that our model can train faster. The pixel range of a color image is 0–255. We will be dividing each pixel of the image by 255 so the pixel range will be between 0–1. Actually, we will be dividing it by 255.0 as it is a float operation. For the model, we will be using Convolutional Neural Networks (CNN).\n"
       ]
     },
     {
@@ -236,12 +236,12 @@
         "outputId": "0155dca5-8501-435a-8ae9-a5e33f72ac6d"
       },
       "source": [
-        "x_train, x_test = x_train / 255, x_test / 255\r\n",
-        "y_train = y_train.flatten();y_test = y_test.flatten()\r\n",
-        "print('x_train shape:  '+ str(x_train.shape))\r\n",
+        "x_train, x_test = x_train / 255, x_test / 255\n",
+        "y_train = y_train.flatten();y_test = y_test.flatten()\n",
+        "print('x_train shape:  '+ str(x_train.shape))\n",
         "print('x_test shape: '+ str(x_test.shape))"
       ],
-      "execution_count": 20,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -259,7 +259,7 @@
         "id": "CyFNpaNI8484"
       },
       "source": [
-        "#Classes for model\r\n",
+        "#Classes for model\n",
         "There are 10 different classes of color images of size 32x32."
       ]
     },
@@ -273,10 +273,10 @@
         "outputId": "21b4ff8b-5ef6-4b6f-b29a-01ec62803700"
       },
       "source": [
-        "classes = len(set(y_train))\r\n",
+        "classes = len(set(y_train))\n",
         "print(classes)"
       ],
-      "execution_count": 21,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -293,7 +293,7 @@
         "id": "y-tccLt1-O1v"
       },
       "source": [
-        "#Building CNN model\r\n",
+        "#Building CNN model\n",
         "A CNN model works in three stages. In the first stage, a convolutional layer extracts the features of the image/data. In the second stage a pooling layer reduces the dimensionality of the image, so small changes do not create a big change on the model. Simply saying, it prevents over-fitting. In the third stage a flattening layer transforms our model in one-dimension and feeds it to the fully connected dense layer. This dense layer then performs prediction of image. A good model has multiple layers of convolutional layers and pooling layers."
       ]
     },
@@ -312,27 +312,27 @@
         "id": "8T3YgXIT9HSL"
       },
       "source": [
-        "model = Sequential([\r\n",
-        "    Conv2D(filters=32,kernel_size=(3,3),input_shape=(32,32,3),activation='relu'),\r\n",
-        "\r\n",
-        "    Conv2D(filters=64,kernel_size=(3,3),input_shape=(32,32,3),activation='relu'),\r\n",
-        "\r\n",
-        "    Conv2D(filters=128,kernel_size=(3,3),input_shape=(32,32,3),activation='relu'),\r\n",
-        "\r\n",
-        "    Flatten(),\r\n",
-        "\r\n",
-        "    Dropout(0.5),\r\n",
-        "\r\n",
-        "    Dense(units=1024,activation='relu'),\r\n",
-        "\r\n",
-        "    Dropout(0.5),\r\n",
-        "\r\n",
-        "    Dense(units=classes,activation='softmax')\r\n",
-        "\r\n",
-        "    ])\r\n",
-        "model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])\r\n"
+        "model = Sequential([\n",
+        "    Conv2D(filters=32,kernel_size=(3,3),input_shape=(32,32,3),activation='relu'),\n",
+        "\n",
+        "    Conv2D(filters=64,kernel_size=(3,3),input_shape=(32,32,3),activation='relu'),\n",
+        "\n",
+        "    Conv2D(filters=128,kernel_size=(3,3),input_shape=(32,32,3),activation='relu'),\n",
+        "\n",
+        "    Flatten(),\n",
+        "\n",
+        "    Dropout(0.5),\n",
+        "\n",
+        "    Dense(units=1024,activation='relu'),\n",
+        "\n",
+        "    Dropout(0.5),\n",
+        "\n",
+        "    Dense(units=classes,activation='softmax')\n",
+        "\n",
+        "    ])\n",
+        "model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])\n"
       ],
-      "execution_count": 22,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -347,7 +347,7 @@
       "source": [
         "print(model.summary())"
       ],
-      "execution_count": 23,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
@@ -390,7 +390,7 @@
       "source": [
         "csv_logger = CSVLogger('/content/drive/MyDrive/TrainedModels/Cifar10CNN.log', separator=',', append=False)"
       ],
-      "execution_count": 24,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -401,7 +401,7 @@
       "source": [
         "num_epochs=15"
       ],
-      "execution_count": 25,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -432,10 +432,10 @@
         "id": "I6U_X_a0Z8NE"
       },
       "source": [
-        "model2=load_model('/content/drive/MyDrive/TrainedModels/Cifar10CNN.h5')\r\n",
+        "model2=load_model('/content/drive/MyDrive/TrainedModels/Cifar10CNN.h5')\n",
         "history2 = pd.read_csv('/content/drive/MyDrive/TrainedModels/Cifar10CNN.log', sep=',', engine='python')"
       ],
-      "execution_count": 27,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -458,17 +458,17 @@
         "outputId": "e9c79e32-add8-419e-cf52-b515dd799f4b"
       },
       "source": [
-        "plt.plot(result.history['loss'], label='loss')\r\n",
-        "plt.plot(result.history['val_loss'], label='val_loss')\r\n",
-        "# ''' for loaded model2 fromdrive'''\r\n",
-        "# plt.plot(history2['loss'], label='loss')    \r\n",
-        "# plt.plot(history2['val_loss'], label='val_loss')\r\n",
-        "plt.title('model loss')\r\n",
-        "plt.ylabel('loss')\r\n",
-        "plt.xlabel('epoch')\r\n",
+        "plt.plot(result.history['loss'], label='loss')\n",
+        "plt.plot(result.history['val_loss'], label='val_loss')\n",
+        "# ''' for loaded model2 fromdrive'''\n",
+        "# plt.plot(history2['loss'], label='loss')    \n",
+        "# plt.plot(history2['val_loss'], label='val_loss')\n",
+        "plt.title('model loss')\n",
+        "plt.ylabel('loss')\n",
+        "plt.xlabel('epoch')\n",
         "plt.legend(['train', 'test'], loc='upper right')"
       ],
-      "execution_count": 28,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -517,18 +517,18 @@
         "outputId": "0bf8a9fe-588c-4775-fdea-fadff9bda253"
       },
       "source": [
-        "# Plot the accuracy\r\n",
-        "plt.plot(result.history['accuracy'], label='accuracy')\r\n",
-        "plt.plot(result.history['val_accuracy'], label='val_accuracy')\r\n",
-        "# ''' for loaded model2 from drive'''\r\n",
-        "# plt.plot(history2['accuracy'])\r\n",
-        "# plt.plot(history2['val_accuracy'])\r\n",
-        "plt.title('model accuracy')\r\n",
-        "plt.ylabel('accuracy')\r\n",
-        "plt.xlabel('epoch')\r\n",
+        "# Plot the accuracy\n",
+        "plt.plot(result.history['accuracy'], label='accuracy')\n",
+        "plt.plot(result.history['val_accuracy'], label='val_accuracy')\n",
+        "# ''' for loaded model2 from drive'''\n",
+        "# plt.plot(history2['accuracy'])\n",
+        "# plt.plot(history2['val_accuracy'])\n",
+        "plt.title('model accuracy')\n",
+        "plt.ylabel('accuracy')\n",
+        "plt.xlabel('epoch')\n",
         "plt.legend(['train', 'test'], loc='lower right')"
       ],
-      "execution_count": 29,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -577,18 +577,18 @@
         "outputId": "a6b0f70c-0b76-4409-949f-6e744946a4ca"
       },
       "source": [
-        "from sklearn.metrics import confusion_matrix\r\n",
-        "\r\n",
-        "predictions = model.predict(x_test).argmax(axis=1) # Need to take argmax to get class number with highest probability for each sample\r\n",
-        "# predictions = model2.predict(x_test).argmax(axis=1)\r\n",
-        "colormap = confusion_matrix(y_test, predictions)\r\n",
-        "import seaborn as sns\r\n",
-        "ax = sns.heatmap(colormap, annot=True, fmt='d', cmap='Greens')\r\n",
-        "ax.set_title(\"Unnormalized Confusion Matrix\")\r\n",
-        "ax.set_xlabel(\"Predicted Label\")\r\n",
+        "from sklearn.metrics import confusion_matrix\n",
+        "\n",
+        "predictions = model.predict(x_test).argmax(axis=1) # Need to take argmax to get class number with highest probability for each sample\n",
+        "# predictions = model2.predict(x_test).argmax(axis=1)\n",
+        "colormap = confusion_matrix(y_test, predictions)\n",
+        "import seaborn as sns\n",
+        "ax = sns.heatmap(colormap, annot=True, fmt='d', cmap='Greens')\n",
+        "ax.set_title(\"Unnormalized Confusion Matrix\")\n",
+        "ax.set_xlabel(\"Predicted Label\")\n",
         "ax.set_ylabel(\"True Label\")"
       ],
-      "execution_count": 30,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -623,7 +623,7 @@
         "id": "nP8fewtREHAa"
       },
       "source": [
-        "\r\n",
+        "\n",
         "# Predications"
       ]
     },
@@ -633,21 +633,21 @@
         "id": "FGR6FaSuD5BW"
       },
       "source": [
-        "def plot(n,g):\r\n",
-        "  from keras.preprocessing import image\r\n",
-        "  img=x_test[n]\r\n",
-        "  x = image.img_to_array(img)\r\n",
-        "  x=np.expand_dims(x,0)\r\n",
-        "  image = np.vstack([x])\r\n",
-        "  prediction = model.predict(image)\r\n",
-        "  # prediction = model2.predict(image) # for model2\r\n",
-        "  ind = np.argmax(prediction)\r\n",
-        "  lis=('airplane' ,'automobile', 'bird','cat', 'deer', 'dog',  'frog',  'horse' , 'ship' , 'truck')\r\n",
-        "  print(\"predicted image: \", lis[ind])\r\n",
-        "  g.imshow(img.reshape((32,32,3)))\r\n",
+        "def plot(n,g):\n",
+        "  from keras.preprocessing import image\n",
+        "  img=x_test[n]\n",
+        "  x = image.img_to_array(img)\n",
+        "  x=np.expand_dims(x,0)\n",
+        "  image = np.vstack([x])\n",
+        "  prediction = model.predict(image)\n",
+        "  # prediction = model2.predict(image) # for model2\n",
+        "  ind = np.argmax(prediction)\n",
+        "  lis=('airplane' ,'automobile', 'bird','cat', 'deer', 'dog',  'frog',  'horse' , 'ship' , 'truck')\n",
+        "  print(\"predicted image: \", lis[ind])\n",
+        "  g.imshow(img.reshape((32,32,3)))\n",
         "  g.title.set_text(\"predicted: \"+ str(lis[ind]))"
       ],
-      "execution_count": 34,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -661,18 +661,18 @@
         "outputId": "177e1c4b-2875-4db7-9644-25e6a9b2ae10"
       },
       "source": [
-        "f, (ax1, ax2,ax3,ax4,ax5) = plt.subplots(1, 5, sharey=True,figsize=(20, 20))\r\n",
-        "print(\"Predicated\\n\")\r\n",
-        "plot(0,ax1)\r\n",
-        "plot(1,ax2)\r\n",
-        "plot(2,ax3)\r\n",
-        "plot(3,ax4)\r\n",
-        "plot(4,ax5)\r\n",
-        "# plot(5,ax6)\r\n",
-        "# plot(6,ax7)\r\n",
+        "f, (ax1, ax2,ax3,ax4,ax5) = plt.subplots(1, 5, sharey=True,figsize=(20, 20))\n",
+        "print(\"Predicated\\n\")\n",
+        "plot(0,ax1)\n",
+        "plot(1,ax2)\n",
+        "plot(2,ax3)\n",
+        "plot(3,ax4)\n",
+        "plot(4,ax5)\n",
+        "# plot(5,ax6)\n",
+        "# plot(6,ax7)\n",
         "# plot(7,ax8)"
       ],
-      "execution_count": 35,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "stream",
